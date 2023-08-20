@@ -6,7 +6,7 @@
 /**
  * handle_char - Prints characters
  * @args: variable argument
- * counter: counts the number of char printed
+ * @counter: counts the number of char printed
  *
  * Return: Nothing (void function)
  */
@@ -18,7 +18,7 @@ void handle_char(va_list args, int *counter)
 /**
  * handle_string - Prints strings
  * @args: variable arg
- * counter: counts the no of char printed
+ * @counter: counts the no of char printed
  *
  * Return: Nothing (void function)
  */
@@ -51,6 +51,7 @@ void handle_percent(va_list args, int  *counter)
  * handle_default - Prints a default character if none of speciefies match
  * @args: variable argument
  * @counter: counts the number of characters printed
+ * @c: Character to be printed
  *
  * Return: Nothing (void function)
  */
@@ -75,7 +76,7 @@ int _printf(const char *format, ...)
 		{'s', handle_string},
 		{'%', handle_percent}
 	};
-	va_start(args,format);
+	va_start(args, format);
 
 	num_handlers = sizeof(handlers) / sizeof(handlers[0]);
 	if (format == NULL)
