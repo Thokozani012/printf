@@ -90,6 +90,7 @@ int _printf(const char *format, ...)
 			if (format[i] == ' ' && format[i + 1] != '\0')
 			{
 				return (-1);
+				break;
 			}
 			found_handler = 0;
 			for (j = 0; j < num_handlers; j++)
