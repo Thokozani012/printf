@@ -104,7 +104,6 @@ int _printf(const char *format, ...)
 				if (format[i] != '%')
 					counter += _putchar('%');
 				handle_default(args, &counter, format[i]);
-				counter++;
 			}
 		}
 		else
