@@ -81,6 +81,8 @@ int _printf(const char *format, ...)
 	num_handlers = sizeof(handlers) / sizeof(handlers[0]);
 	if (format == NULL || args == NULL)
 		return (-1);
+	if (format[1] == '%' && format[1] == ' ' && format[2] == '\0')
+		return (-1);
 
 	for (i = 0; format[i]; i++)
 	{
