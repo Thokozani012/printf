@@ -90,6 +90,16 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
+			if (format[i] == '\0')
+			{
+				va_end(args);
+				return (-1);
+			}
+			else if (format[i] == ' ')
+			{
+				va_end(args);
+				return (-1);
+			}
 			found_handler = 0;
 			for (j = 0; j < num_handlers; j++)
 			{
