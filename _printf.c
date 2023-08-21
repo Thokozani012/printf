@@ -76,7 +76,8 @@ int _printf(const char *format, ...)
 	FormatHandler handlers[] = {
 		{'c', handle_char},
 		{'s', handle_string},
-		{'%', handle_percent}
+		{'%', handle_percent},
+		{0, NULL}
 	};
 
 	num_handlers = sizeof(handlers) / sizeof(handlers[0]);
