@@ -82,7 +82,7 @@ int _printf(const char *format, ...)
 	if (format == NULL || args == NULL)
 		return (-1);
 
-	for (i = 0; format[i] != '\0'; i++)
+	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
 		{
