@@ -73,8 +73,7 @@ int _printf(const char *format, ...)
 	int i, j, num_handlers, found_handler, counter = 0;
 	FormatHandler handlers[] = {
 		{'c', handle_char},
-		{'s', handle_string},
-		{'%', handle_percent}
+		{'s', handle_string}
 	};
 	va_start(args, format);
 
