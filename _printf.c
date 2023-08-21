@@ -41,11 +41,11 @@ void handle_string(va_list args, int *counter)
  *
  * Return: Nothing (void function)
  */
-void handle_percent(va_list args, int  *counter)
+/*void handle_percent(va_list args, int  *counter)
 {
 	(void) args;
 	*counter += _putchar('%');
-}
+}*/
 
 /**
  * handle_default - Prints a default character if none of speciefies match
@@ -73,8 +73,7 @@ int _printf(const char *format, ...)
 	int i, j, num_handlers, found_handler, counter = 0;
 	FormatHandler handlers[] = {
 		{'c', handle_char},
-		{'s', handle_string},
-		{'%', handle_percent}
+		{'s', handle_string}
 	};
 	va_start(args, format);
 
@@ -87,6 +86,8 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
+			if (format[i] == '%' && format[i] == '\0')
+				return (-1);
 			found_handler = 0;
 			for (j = 0; j < num_handlers; j++)
 			{
@@ -99,7 +100,9 @@ int _printf(const char *format, ...)
 			}
 			if (!found_handler)
 			{
+				counter += _putchar('%');
 				handle_default(args, &counter, format[i]);
+				counter++;
 			}
 		}
 		else
