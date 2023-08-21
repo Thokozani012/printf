@@ -81,7 +81,7 @@ int _printf(const char *format, ...)
 	};
 
 	num_handlers = sizeof(handlers) / sizeof(handlers[0]);
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+	if (format == NULL)
 		return (-1);
 	va_start(args, format);
 
