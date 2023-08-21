@@ -87,7 +87,7 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == '%' && format[i + 1] == '\0')
+			if (format[i] == ' ')
 				return (-1);
 			found_handler = 0;
 			for (j = 0; j < num_handlers; j++)
