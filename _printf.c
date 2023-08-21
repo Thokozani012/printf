@@ -73,8 +73,7 @@ int _printf(const char *format, ...)
 	int i, j, num_handlers, found_handler, counter = 0;
 	FormatHandler handlers[] = {
 		{'c', handle_char},
-		{'s', handle_string},
-		{'%', handle_string}
+		{'s', handle_string}
 	};
 	va_start(args, format);
 
@@ -101,7 +100,8 @@ int _printf(const char *format, ...)
 			}
 			if (!found_handler)
 			{
-				counter += _putchar('%');
+				if (format[i] != '%')
+					counter += _putchar('%');
 				handle_default(args, &counter, format[i]);
 				counter++;
 			}
