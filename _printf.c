@@ -76,21 +76,17 @@ int _printf(const char *format, ...)
 		{'s', handle_string},
 		{'%', handle_percent}
 	};
-	va_start(args, format);
 
 	num_handlers = sizeof(handlers) / sizeof(handlers[0]);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
+	va_start(args, format);
 
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == '\0')
-				break;
-			if (format[i] == ' ')
-				return (-1);
 			found_handler = 0;
 			for (j = 0; j < num_handlers; j++)
 			{
