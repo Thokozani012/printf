@@ -105,9 +105,7 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
-		{
 			counter += _putchar(format[i]);
-		}
 	}
 	va_end(args);
 	return (counter);
