@@ -87,8 +87,6 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == ' ')
-				counter += _putchar(' ');
 			found_handler = 0;
 			for (j = 0; j < num_handlers; j++)
 			{
