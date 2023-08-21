@@ -27,6 +27,8 @@ void handle_string(va_list args, int *counter)
 	char *str;
 
 	str = va_arg(args, char *);
+	if (str == NULL)
+		str = "NULL";
 	while (*str)
 	{
 		*counter += _putchar(*str);
