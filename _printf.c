@@ -4,6 +4,28 @@
 #include "main.h"
 
 /**
+ * handle_string - Prints and counts the characters of a string
+ * @args: argument string to be printed and counted
+ * @counter: Counts the number of char of the string printed
+ *
+ * Return: Nothing (void function)
+ */
+
+void handle_string(va_list args, int *counter)
+{
+	char *str;
+
+	str = va_arg(args, char *);
+	if (str == NULL)
+		str = "NULL";
+	while (*str)
+	{
+		*counter += _putchar(*str);
+		str++;
+	}
+}
+
+/**
  * _printf - Printf function replica
  * @format: Format arguments
  *
@@ -14,7 +36,6 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int counter = 0;
-	char *str;
 
 	va_start(args, format);
 
@@ -36,17 +57,7 @@ int _printf(const char *format, ...)
 			}
 			if (*format == 's')
 			{
-				str = va_arg(args, char *);
-				if (str == NULL)
-				{
-					str = "NULL";
-					counter = counter + 1;
-				}
-				while (*str)
-				{
-					counter += _putchar(*str);
-					str++;
-				}
+				handle_string(args, &counter);
 			}
 			else if (*format == 'c')
 			{
@@ -62,5 +73,4 @@ int _printf(const char *format, ...)
 	}
 	va_end(args);
 	return (counter);
-	_putchar('\n');
 }
