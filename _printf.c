@@ -50,10 +50,8 @@ int _printf(const char *format, ...)
 		else
 		{
 			++format;
-			if (*format == '\0' || *format == ' ')
-			{
-				return (-1);
-			}
+			if (*format == '\0')
+				break;
 			if (*format == 's')
 			{
 				handle_string(args, &counter);
