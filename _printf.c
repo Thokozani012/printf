@@ -38,8 +38,10 @@ int _printf(const char *format, ...)
 			{
 				str = va_arg(args, char *);
 				if (str == NULL)
+				{
 					str = "NULL";
-				counter = counter + 2;
+					counter = counter + 2;
+				}
 				while (*str)
 				{
 					counter += _putchar(*str);
