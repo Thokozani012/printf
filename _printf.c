@@ -6,21 +6,22 @@
 /**
  * handle_string - Prints and counts the characters of a string
  * @args: argument string to be printed and counted
- * @counter: Counts the number of char of the string printed
+ * @buffer: buffer allocation
+ * @buffer_index: Counts the number of char of the string printed
  *
  * Return: Nothing (void function)
  */
 
-void handle_string(va_list args, int *counter)
+void handle_string(va_list args, char *buffer, int *buffer_index)
 {
-	char *str;
+	const char *str;
 
-	str = va_arg(args, char *);
+	str = va_arg(args, const char *);
 	if (str == NULL)
 		str = "(NULL)";
 	while (*str)
 	{
-		*counter += _putchar(*str);
+		buffer[(*buffer_index)++] = *str;
 		str++;
 	}
 }
@@ -35,7 +36,8 @@ void handle_string(va_list args, int *counter)
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int counter = 0;
+	char buffer[BUFFER_SIZE];
+	int buffer_index = 0;
 
 	va_start(args, format);
 
@@ -45,7 +47,7 @@ int _printf(const char *format, ...)
 	{
 		if (*format != '%')
 		{
-			counter += _putchar(*format);
+			buffer[buffer_index++] = *format;
 		}
 		else
 		{
@@ -57,20 +59,26 @@ int _printf(const char *format, ...)
 			}
 			if (*format == 's')
 			{
-				handle_string(args, &counter);
+				handle_string(args, buffer, &buffer_index);
 			}
 			else if (*format == 'c')
 			{
-				counter += _putchar(va_arg(args, int));
+				buffer[buffer_index++] = va_arg(args, int);
+			}
+			else if (*format == 'd' || *format == 'i')
+			{
+				process_integer(va_arg(args, int), buffer, &buffer_index);
 			}
 			else
 			{
 				if (*format != '%')
-					counter += _putchar('%');
-				counter += _putchar(*format);
+					buffer[buffer_index++] = '%';
+				buffer[buffer_index++] = *format;
 			}
 		}
+		check_and_flush_buffer(buffer, &buffer_index);
 	}
+	flush_remaining_buffer(buffer, &buffer_index);
 	va_end(args);
-	return (counter);
+	return (buffer_index);
 }
