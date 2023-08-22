@@ -50,9 +50,8 @@ int _printf(const char *format, ...)
 		else
 		{
 			++format;
-			if (*format == '\0' || *format == ' ' || (*format == ' ' && *(format + 1) == '\0'))
+			if (*format == '\0' || *format == ' ')
 			{
-				va_end(args);
 				return (-1);
 			}
 			if (*format == 's')
