@@ -52,7 +52,6 @@ int _printf(const char *format, ...)
 			++format;
 			if (*format == '\0' || *format == ' ')
 			{
-				va_end(args);
 				return (-1);
 			}
 			if (*format == 's')
