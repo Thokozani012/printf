@@ -40,7 +40,7 @@ int _printf(const char *format, ...)
 				if (str == NULL)
 				{
 					str = "NULL";
-					counter = counter + 2;
+					counter = counter + 1;
 				}
 				while (*str)
 				{
