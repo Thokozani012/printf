@@ -46,9 +46,7 @@ int _printf(const char *format, ...)
 	for (; *format; ++format)
 	{
 		if (*format != '%')
-		{
 			buffer[buffer_index++] = *format;
-		}
 		else
 		{
 			++format;
