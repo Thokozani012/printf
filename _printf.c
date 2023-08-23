@@ -53,17 +53,11 @@ int _printf(const char *format, ...)
 			if (*format == '\0' || *format == ' ')
 				return (-1);
 			if (*format == 's')
-			{
 				handle_string(args, buffer, &buffer_index);
-			}
 			else if (*format == 'c')
-			{
 				buffer[buffer_index++] = va_arg(args, int);
-			}
 			else if (*format == 'd' || *format == 'i')
-			{
 				process_integer(va_arg(args, int), buffer, &buffer_index);
-			}
 			else
 			{
 				if (*format != '%')
